@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="jquery-1.8.3.min.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        .main {
+            width: 500px;
+            /*height:400px;*/
+            border: 1px solid black;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .content {
+            width: 100%;
+            border: 1px solid black;
+            height: 100px;
+        }
+
+        .btns {
+            width: 100%;
+            border: 1px solid blue;
+            height: 50px;
+            text-align: right;
+            position: relative;
+        }
+
+            .btns input {
+                width: 75px;
+                height: 24px;
+                margin-right: 25px;
+                margin-top: 13px;
+                position: absolute;
+            }
+
+                .btns input#f {
+                    right: 100px;
+                    top: 0;
+                }
+
+                .btns input#s {
+                    right: 0;
+                    top: 0;
+                }
+
+        /*.btns input#s {
+                right:0;
+                top:-50px;
+                z-index:1000;
+            }*/
+    </style>
+    <script type="text/javascript">
+        var flag = 0;
+        $(function () {
+            $("#s").bind("mouseover", function () {
+                if (flag < 2) {
+                    if ($(this).css("top") != "0px") {
+                        $(this).css("top", "0px").css("right", "0px").animate({
+                            "top": "+=0px"
+                        }, 500);
+                    }
+                    else {
+                        $(this).css("top", "0px").css("right", "0px").animate({
+                            "top": "-=80px"
+                        }, 500);
+                        flag++;
+                    }
+                }
+                else {
+                    if ($(this).css("top") != "0px") {
+                        $(this).css("top", "0px").css("right", "0px").animate({
+                            "top": "+=0px"
+                        }, 500);
+                    }
+                }
+            });
+            $("#f,#s").click(function () {
+                if ($(this).val() == "不是") {
+                    $(this).val("是").siblings().val("不是");
+                }
+                else {
+                    alert("我就知道你会选是的...");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="main">
+        <ul>
+            <li class="content"></li>
+            <li class="btns">
+                <input type="button" id="f" value="是" />
+                <input type="button" id="s" value="不是" />
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
